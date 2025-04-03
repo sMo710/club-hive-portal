@@ -16,7 +16,8 @@ import {
   Share2,
   Trash2,
   Trophy,
-  Users
+  Users,
+  Clock
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useAuth } from '@/context/AuthContext';
@@ -44,7 +45,7 @@ const clubsData = [
     category: 'Academic',
     members: 35,
     events: 12,
-    achievements: 8,
+    achievementsCount: 8,
     ranking: 1,
     isMember: true,
     memberRole: 'Member',
@@ -110,7 +111,7 @@ const clubsData = [
       { id: 9, name: 'Noah Williams', avatar: 'https://i.pravatar.cc/150?img=9' },
       { id: 10, name: 'Sophia Garcia', avatar: 'https://i.pravatar.cc/150?img=10' },
     ],
-    achievements: [
+    achievementsList: [
       { id: 201, title: 'Best Technical Club', year: 2024, description: 'Awarded by the Student Union' },
       { id: 202, title: 'Regional Hackathon Winners', year: 2023, description: 'First place at StateU Hackathon' },
       { id: 203, title: 'Most Active Club', year: 2023, description: 'Most events organized in a semester' },
@@ -136,7 +137,7 @@ const clubsData = [
     category: 'Academic',
     members: 28,
     events: 8,
-    achievements: 5,
+    achievementsCount: 5,
     ranking: 2,
     isMember: false,
     memberRole: null,
@@ -183,7 +184,7 @@ const clubsData = [
       { id: 14, name: 'Chloe Davis', avatar: 'https://i.pravatar.cc/150?img=14' },
       { id: 15, name: 'Brandon Wilson', avatar: 'https://i.pravatar.cc/150?img=15' },
     ],
-    achievements: [
+    achievementsList: [
       { id: 301, title: 'National Debating Finalists', year: 2024, description: 'Second place at National Collegiate Debate' },
       { id: 302, title: 'Best Speaker Award', year: 2023, description: 'Awarded to Mark Williams' },
       { id: 303, title: 'Regional Champions', year: 2022, description: 'First place at Regional Debate Tournament' },
@@ -386,7 +387,7 @@ const ClubDetails = () => {
                 
                 <TabsContent value="achievements">
                   <div className="space-y-4">
-                    {club.achievements.map(achievement => (
+                    {club.achievementsList && club.achievementsList.map(achievement => (
                       <div key={achievement.id} className="p-4 border rounded-lg">
                         <div className="flex items-center gap-2 mb-1">
                           <Trophy className="h-4 w-4 text-yellow-500" />
@@ -456,7 +457,7 @@ const ClubDetails = () => {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Achievements</p>
-                    <p className="font-medium">{club.achievements} total achievements</p>
+                    <p className="font-medium">{club.achievementsCount} total achievements</p>
                   </div>
                 </div>
                 

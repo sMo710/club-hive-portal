@@ -41,19 +41,15 @@ const App = () => (
             
             {/* Protected Routes */}
             <Route element={<ProtectedRoute />}>
-              <Route element={<AppLayout />}>
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/events" element={<EventsPage />} />
-                <Route path="/events/:id" element={<EventDetails />} />
-                <Route path="/clubs" element={<ClubsPage />} />
-                <Route path="/clubs/:id" element={<ClubDetails />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                {/* Add more protected routes as they are implemented */}
-              </Route>
+              <Route path="/" element={<AppLayout><Navigate to="/dashboard" replace /></AppLayout>} />
+              <Route path="/dashboard" element={<AppLayout><Dashboard /></AppLayout>} />
+              <Route path="/events" element={<AppLayout><EventsPage /></AppLayout>} />
+              <Route path="/events/:id" element={<AppLayout><EventDetails /></AppLayout>} />
+              <Route path="/clubs" element={<AppLayout><ClubsPage /></AppLayout>} />
+              <Route path="/clubs/:id" element={<AppLayout><ClubDetails /></AppLayout>} />
+              <Route path="/profile" element={<AppLayout><ProfilePage /></AppLayout>} />
+              {/* Add more protected routes as they are implemented */}
             </Route>
-            
-            {/* Redirect root to dashboard or login */}
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
             
             {/* 404 Fallback */}
             <Route path="*" element={<NotFound />} />

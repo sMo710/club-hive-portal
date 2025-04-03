@@ -235,7 +235,7 @@ const ClubsPage = () => {
                     )}
                   </div>
                   {club.isMember && (
-                    <Badge variant="primary" className="ml-auto">
+                    <Badge variant="default" className="ml-auto">
                       {club.memberRole}
                     </Badge>
                   )}
