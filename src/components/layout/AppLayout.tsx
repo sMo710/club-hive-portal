@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -41,7 +41,11 @@ const navItems: SidebarItem[] = [
   { title: 'Help', path: '/help', icon: HelpCircle, role: 'all' },
 ];
 
-const AppLayout = () => {
+interface AppLayoutProps {
+  children: React.ReactNode;
+}
+
+const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -57,7 +61,7 @@ const AppLayout = () => {
   };
 
   if (!user) {
-    return <Outlet />;
+    return <>{children}</>;
   }
 
   return (
@@ -185,7 +189,7 @@ const AppLayout = () => {
 
         {/* Page content */}
         <main className="flex-1 overflow-auto p-6">
-          <Outlet />
+          {children}
         </main>
       </div>
     </div>

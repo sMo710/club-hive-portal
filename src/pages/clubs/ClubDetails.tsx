@@ -10,7 +10,6 @@ import {
   ArrowLeft,
   Award,
   Calendar,
-  Clock, // Import the Clock icon
   Edit,
   Info,
   MessageSquare,
@@ -111,7 +110,7 @@ const clubsData = [
       { id: 9, name: 'Noah Williams', avatar: 'https://i.pravatar.cc/150?img=9' },
       { id: 10, name: 'Sophia Garcia', avatar: 'https://i.pravatar.cc/150?img=10' },
     ],
-    clubAchievements: [ // Renamed from 'achievements' to 'clubAchievements' to avoid duplicate property name
+    achievements: [
       { id: 201, title: 'Best Technical Club', year: 2024, description: 'Awarded by the Student Union' },
       { id: 202, title: 'Regional Hackathon Winners', year: 2023, description: 'First place at StateU Hackathon' },
       { id: 203, title: 'Most Active Club', year: 2023, description: 'Most events organized in a semester' },
@@ -184,7 +183,7 @@ const clubsData = [
       { id: 14, name: 'Chloe Davis', avatar: 'https://i.pravatar.cc/150?img=14' },
       { id: 15, name: 'Brandon Wilson', avatar: 'https://i.pravatar.cc/150?img=15' },
     ],
-    clubAchievements: [ // Renamed from 'achievements' to 'clubAchievements' to avoid duplicate property name
+    achievements: [
       { id: 301, title: 'National Debating Finalists', year: 2024, description: 'Second place at National Collegiate Debate' },
       { id: 302, title: 'Best Speaker Award', year: 2023, description: 'Awarded to Mark Williams' },
       { id: 303, title: 'Regional Champions', year: 2022, description: 'First place at Regional Debate Tournament' },
@@ -387,7 +386,7 @@ const ClubDetails = () => {
                 
                 <TabsContent value="achievements">
                   <div className="space-y-4">
-                    {club.clubAchievements.map(achievement => (
+                    {club.achievements.map(achievement => (
                       <div key={achievement.id} className="p-4 border rounded-lg">
                         <div className="flex items-center gap-2 mb-1">
                           <Trophy className="h-4 w-4 text-yellow-500" />

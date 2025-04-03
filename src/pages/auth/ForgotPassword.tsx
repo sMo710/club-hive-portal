@@ -14,18 +14,20 @@ const forgotPasswordSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
 });
 
+type ForgotPasswordValues = z.infer<typeof forgotPasswordSchema>;
+
 const ForgotPassword = () => {
   const { forgotPassword, isLoading } = useAuth();
   const [isSubmitted, setIsSubmitted] = React.useState(false);
 
-  const form = useForm({
+  const form = useForm<ForgotPasswordValues>({
     resolver: zodResolver(forgotPasswordSchema),
     defaultValues: {
       email: '',
     },
   });
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values: ForgotPasswordValues) => {
     try {
       await forgotPassword(values.email);
       setIsSubmitted(true);

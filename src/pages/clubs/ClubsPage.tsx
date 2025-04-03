@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -9,6 +10,7 @@ import { Filter, Plus, Search, Trophy, Users } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { toast } from 'sonner';
 
+// Mock clubs data
 const clubsData = [
   {
     id: 1,
@@ -125,6 +127,7 @@ const ClubsPage = () => {
   const [membershipFilter, setMembershipFilter] = useState('all');
   const [clubs, setClubs] = useState(clubsData);
 
+  // Handle join/leave club
   const handleJoinLeaveClub = (club: typeof clubsData[0], e: React.MouseEvent) => {
     e.stopPropagation();
     
@@ -144,6 +147,7 @@ const ClubsPage = () => {
     setClubs(updatedClubs);
   };
 
+  // Filter clubs based on search query, category, and membership
   const filteredClubs = clubs.filter(club => {
     const matchesSearch = club.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           club.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -231,7 +235,7 @@ const ClubsPage = () => {
                     )}
                   </div>
                   {club.isMember && (
-                    <Badge variant="secondary" className="ml-auto">
+                    <Badge variant="primary" className="ml-auto">
                       {club.memberRole}
                     </Badge>
                   )}
