@@ -1,73 +1,31 @@
-# Welcome to your Lovable project
 
-## Project info
+# ClubHive - Student Project
 
-**URL**: https://lovable.dev/projects/c40e9952-d8fd-4ce3-b709-33eda0a434b9
+## Project Overview
 
-## How can I edit this code?
+ClubHive is a web application for managing university clubs and events. This is a simple implementation for educational purposes.
 
-There are several ways of editing your application.
+## Setup and Running
 
-**Use Lovable**
+### Frontend (React + Vite)
+1. Install dependencies: `npm install`
+2. Run the development server: `npm run dev`
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c40e9952-d8fd-4ce3-b709-33eda0a434b9) and start prompting.
+### Backend (Express)
+1. Install the backend dependencies: `npm install express cors`
+2. Run the backend server: `node src/server/index.js`
 
-Changes made via Lovable will be committed automatically to this repo.
+## Features
+- User authentication (admin and student roles)
+- Club management
+- Event creation and management
+- Event registration
 
-**Use your preferred IDE**
+## Tech Stack
+- Frontend: React, Vite, TailwindCSS
+- Backend: Express.js with in-memory data storage
+- State Management: React Context API
+- Form Handling: React Hook Form with Zod validation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/c40e9952-d8fd-4ce3-b709-33eda0a434b9) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes it is!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Note
+This is a simplified implementation for educational purposes. The backend uses in-memory storage instead of a real database.

@@ -1,28 +1,9 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { toast } from 'sonner';
+import { authService } from '@/services/api';
 
 const AuthContext = createContext(undefined);
-
-// Mock auth functions - these would connect to a real backend in production
-const mockUsers = [
-  {
-    id: '1',
-    name: 'Admin User',
-    email: 'admin@example.com',
-    password: 'password123',
-    role: 'admin',
-    avatar: 'https://i.pravatar.cc/150?img=1',
-  },
-  {
-    id: '2',
-    name: 'Student User',
-    email: 'student@example.com',
-    password: 'password123',
-    role: 'student',
-    avatar: 'https://i.pravatar.cc/150?img=2',
-  },
-];
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -40,20 +21,9 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     setIsLoading(true);
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      const foundUser = mockUsers.find(
-        user => user.email === email && user.password === password
-      );
-      
-      if (!foundUser) {
-        throw new Error('Invalid credentials');
-      }
-      
-      const { password: _, ...userWithoutPassword } = foundUser;
-      setUser(userWithoutPassword);
-      localStorage.setItem('club-hive-user', JSON.stringify(userWithoutPassword));
+      const { user: userData } = await authService.login(email, password);
+      setUser(userData);
+      localStorage.setItem('club-hive-user', JSON.stringify(userData));
       toast.success('Successfully logged in!');
     } catch (error) {
       toast.error(error instanceof Error ? error.message : 'Failed to login');
@@ -66,24 +36,9 @@ export const AuthProvider = ({ children }) => {
   const register = async (name, email, password, role) => {
     setIsLoading(true);
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      if (mockUsers.some(user => user.email === email)) {
-        throw new Error('Email already in use');
-      }
-      
-      const newUser = {
-        id: String(mockUsers.length + 1),
-        name,
-        email,
-        role,
-        avatar: `https://i.pravatar.cc/150?img=${mockUsers.length + 3}`,
-      };
-      
-      // In a real app, we'd save to the database
-      setUser(newUser);
-      localStorage.setItem('club-hive-user', JSON.stringify(newUser));
+      const { user: userData } = await authService.register(name, email, password, role);
+      setUser(userData);
+      localStorage.setItem('club-hive-user', JSON.stringify(userData));
       toast.success('Account created successfully!');
     } catch (error) {
       toast.error(error instanceof Error ? error.message : 'Failed to register');
@@ -102,14 +57,8 @@ export const AuthProvider = ({ children }) => {
   const forgotPassword = async (email) => {
     setIsLoading(true);
     try {
-      // Simulate API call
+      // For a student project, we'll just simulate this
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      const userExists = mockUsers.some(user => user.email === email);
-      if (!userExists) {
-        throw new Error('No account found with this email');
-      }
-      
       toast.success('Password reset instructions sent to your email');
     } catch (error) {
       toast.error(error instanceof Error ? error.message : 'Failed to send reset email');
@@ -122,7 +71,7 @@ export const AuthProvider = ({ children }) => {
   const resetPassword = async (token, password) => {
     setIsLoading(true);
     try {
-      // Simulate API call
+      // For a student project, we'll just simulate this
       await new Promise(resolve => setTimeout(resolve, 1000));
       toast.success('Password has been reset successfully');
     } catch (error) {
