@@ -12,8 +12,11 @@ ClubHive is a web application for managing university clubs and events. This is 
 2. Run the development server: `npm run dev`
 
 ### Backend (Express)
-1. Install the backend dependencies: `npm install express cors`
-2. Run the backend server: `node src/server/index.js`
+1. Make sure Node.js is installed on your system
+2. Navigate to the project root directory
+3. Install the backend dependencies: `npm install express cors`
+4. Run the backend server: `node src/server/index.js`
+5. The backend will be available at http://localhost:3001
 
 ## Features
 - User authentication (admin and student roles)
